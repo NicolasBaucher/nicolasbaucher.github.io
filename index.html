@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nicolas Baucher — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+
+
+:root {
+  --primary-color: #ffffff; /* Headings & bullet points in bright white */
+  --primary-light: #ffffff; /* Hover/accent remains bright white */
+  --primary-dark: #ffffff;  /* Strong white for headings */
+
+  --text-primary: #e6e6e6;  /* Main body text - softer white */
+  --text-primary-hover: #ffffff; /* Brighter on hover */
+  --text-secondary: #c9c9c9; /* Secondary info text */
+  --text-on-primary: #000000; /* Text on colored/gradient backgrounds */
+
+  --background: #000000; /* Page background */
+  --surface: #121212; /* Card background */
+  --surface-hover: #1e1e1e; /* Slightly lighter grey for card hover */
+
+  --border: #2e2e2e; /* Same subtle border for normal & hover */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.6);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.6);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.6);
+
+  --gradient-bg: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.05) 100%);
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--background);
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cv-content {
+      background: rgba(31, 31, 31, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(64, 64, 64, 0.3);
+      margin-top: 1rem;
+    }
+
+    /* Language Selector */
+    .language-selector-container {
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    #language-selector {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+      font-family: 'Inter', sans-serif;
+    }
+
+    #language-selector:hover {
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+    }
+
+    #language-selector:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin: 2.5rem 0 1.5rem 0;
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-color);
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 3rem;
+      height: 2px;
+      background: var(--primary-light);
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--gradient-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2.5rem;
+      /*border: 1px solid rgba(96, 165, 250, 0.2);*/
+    }
+
+    .contact p {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .contact p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .contact a:hover {
+      color: var(--primary-light);
+      text-decoration: underline;
+    }
+
+    .contact a:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Experience Items */
+    .experience-item, .education-item {
+      margin-bottom: 1.5rem;
+      padding: 1.25rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+
+	/* HOVER EFFECT */
+	 .experience-item:hover, .education-item:hover, .award-item:hover, .skills-category:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-color);
+    }
+	
+	
+
+    .experience-item:last-child, .education-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Lists */
+    ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0.5rem;
+      top: 0.75rem;
+      width: 6px;
+      height: 6px;
+      background: var(--primary-color);
+      transform: rotate(45deg);
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Awards Section */
+    .awards-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .award-item {
+      background: var(--surface);
+      padding: 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .award-item:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-color);
+    }
+
+    /* Skills Section */
+    .skills-category {
+      margin-bottom: 1.5rem;
+      padding: 1.25rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .skills-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-content {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Chatbot Styles */
+    #chatbot-launcher {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      color: var(--text-on-primary);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: move;
+      z-index: 9999;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #chatbot-launcher:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    #chatbot-launcher:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3), var(--shadow-lg);
+    }
+
+    #chatbot-modal {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9998;
+      background: var(--surface);
+      box-shadow: var(--shadow-lg);
+      border-radius: 12px 12px 0 0;
+    }
+
+    #chatbot-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px 12px 0 0;
+    }
+
+    #chatbot-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #ef4444;
+      color: var(--text-on-primary);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+      z-index: 10000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #chatbot-close:hover {
+      background: #dc2626;
+      transform: scale(1.05);
+    }
+
+    #chatbot-close:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 1rem;
+      }
+
+      .cv-content {
+        padding: 2rem 1.5rem;
+        border-radius: 12px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+
+      .contact {
+        padding: 1.5rem;
+      }
+
+      .experience-item, .education-item {
+        padding: 1.25rem;
+      }
+
+      #chatbot-modal {
+        border-radius: 0;
+      }
+
+      #chatbot-iframe {
+        border-radius: 0;
+      }
+    }
+
+    @media (min-width: 769px) {
+      #chatbot-modal {
+        width: 400px;
+        height: 600px;
+        bottom: 20px;
+        right: 20px;
+        border-radius: 12px;
+      }
+
+      #chatbot-iframe {
+        border-radius: 12px;
+      }
+
+      .awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white !important;
+        background-image: none !important;
+        color: black !important;
+      }
+
+      .main-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .cv-content {
+        background: white !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0;
+        margin: 0;
+      }
+
+      .language-selector-container,
+      #chatbot-launcher,
+      #chatbot-modal {
+        display: none !important;
+      }
+
+      h1, h2 {
+        color: black !important;
+      }
+
+      .contact a {
+        color: black !important;
+        text-decoration: underline !important;
+      }
+
+      .experience-item, .education-item, .skills-category, .award-item {
+        background: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        break-inside: avoid;
+      }
+
+      * {
+        color: black !important;
+      }
+    }
+
+    /* Animation for content switching */
+    .cv-section {
+      display: none;              /* hide non-active sections so they don't take space */
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .cv-section.active {
+      display: block;             /* only the active language section participates in layout */
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="language-selector-container">
+      <select id="language-selector">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+
+    <div class="cv-content">
+      <!-- ENGLISH CV -->
+      <div id="cv-en" class="cv-section active">
+        <h1>Nicolas Baucher</h1>
+        <div class="contact">
+          <p>📞 +33 (0)6 14 45 96 20</p>
+          <p>📧 <a href="mailto:nicolas.baucher@gmail.com">nicolas.baucher@gmail.com</a></p>
+          <p>🔗 <a href="https://linkedin.com/in/nicolasbaucher" target="_blank">linkedin.com/in/nicolasbaucher</a></p>
+		  <p>🌐 <a href="https://nicolasbaucher.github.io/" target="_blank">nicolasbaucher.github.io</a></p>
+		  <p>🌍 Citizenship: French</p>
+		  
+        </div>
+
+        <section>
+          <h2>Work Experience</h2>
+          
+          <div class="experience-item">
+            <div class="job-title">Senior BI Product Manager Tech for Transportation Services — AMAZON, Luxembourg (2021–2025)</div>
+            <ul>
+               <li>Contributed to exceeding the annual sales target by 120% in 2022.</li>
+      <li>Provided technical advice and customer support (electricity, air conditioning, plumbing).</li>
+      <li>Conducted electrical studies and technical sizing.</li>
+      <li>Order tracking and after-sales service management.</li>
+      <li>Implemented and participated in client events (trade shows, product presentations).</li>
+      <li>Actively contributed to revenue growth through customer retention and prospecting.</li>
+            </ul>
+          </div>
+
+<div class="experience-item">
+    <div class="job-title">Sales Representative — Maselec, France (2008–2016)</div>
+    <ul>
+      <li>Welcoming and advising clients on all types of electrical equipment for buildings, guiding them towards solutions suited to their needs.</li>
+      <li>Sales and monitoring of electrical equipment purchases for professionals and individuals, ensuring a complete service from advice to delivery.</li>
+      <li>Management of commercial transactions and tracking of building electrical equipment stock, ensuring customer satisfaction.</li>
+      <li>Technical advisor for building electrical equipment, directing clients to the most efficient and cost-effective solutions.</li>
+      <li>Buying and selling electrical equipment: analyzing client needs, proposing solutions, and managing orders.</li>
+    </ul>
+</div>
+
+<div class="experience-item">
+    <div class="job-title">Graphic Designer — Octe, France (2005–2008)</div>
+    <ul>
+      <li>Designing and producing communication materials (posters, flyers, brochures, catalogs, web banners, social media content).</li>
+      <li>Developing graphic guidelines and ensuring compliance.</li>
+      <li>Collaborating with marketing, communication, or sales teams to meet visual needs.</li>
+      <li>Using graphic design software (Adobe Photoshop, Illustrator, InDesign, etc.).</li>
+      <li>Creating mockups, logos, and visual identities.</li>
+      <li>Keeping up with creative and technological trends to propose new ideas.</li>
+    </ul>
+</div>
+
+<div class="experience-item">
+    <div class="job-title">Maintenance Technician — SEALED AIR S.A.S, France (2002–2005)</div>
+    <ul>
+      <li>Ensuring preventive and corrective maintenance of industrial equipment to guarantee proper functioning.</li>
+      <li>Quickly diagnosing malfunctions and proposing appropriate technical solutions.</li>
+      <li>Participating in continuous process improvement and installation safety.</li>
+      <li>Monitoring interventions and managing spare parts.</li>
+    </ul>
+</div>
+
+<div class="experience-item">
+    <div class="job-title">Industrial Electrician — AQUABELLEC, France (2001–2002)</div>
+    <ul>
+      <li>Installation and wiring of control cabinets for industrial equipment.</li>
+      <li>Reading and interpreting industrial electrical diagrams.</li>
+      <li>Testing and commissioning electrical installations to ensure compliance.</li>
+      <li>Strict adherence to safety standards and industrial electrical procedures.</li>
+    </ul>
+</div>
+
+  
+  
+  
+  
+  
+        </section>
+
+ <section>
+  <h2>Awards & Achievements</h2>
+  <div class="awards-grid">
+    <div class="award-item">
+      <div class="skills-title">🏆 Annual sales target exceeded by 120% in 2022</div>
+      <div class="skills-content">Rexel Vallauris, France (2025)</div>
+    </div>
+    <div class="award-item">
+      <div class="skills-title">🏅 Increased customer portfolio by +30% in two years</div>
+      <div class="skills-content">Rexel Vallauris, France (2025)</div>
+    </div>
+    <div class="award-item">
+      <div class="skills-title">🏆 Reduced average after-sales service processing time by 15%</div>
+      <div class="skills-content">Rexel Vallauris, France (2025)</div>
+    </div>
+    <div class="award-item">
+      <div class="skills-title">🏅 Customer initiative award (organization of technical events, client loyalty)</div>
+      <div class="skills-content">Rexel Vallauris, France (2025)</div>
+    </div>
+  </div>
+</section>
+		
+		
+		
+		
+		
+		
+		
+<section>
+  <h2>Education</h2>
+  
+  
+<div class="education-item">
+    <div class="job-title">Graphic Design Training — C.C.I, France (2002-2003)</div>
+</div>
+<div class="education-item">
+    <div class="job-title">B.T.S. M.A.I. Studies (Industrial Mechanics and Automation) — Lycée Louis Bascan, France (2001 - 2002)</div>
+</div>
+<div class="education-item">
+    <div class="job-title">S.T.I. High School Diploma (Industrial Sciences and Techniques) with specialization in Industrial Drawing — Lycée Louis Bascan, France (2000 - 2001)</div>
+</div>
+
+  
+  
+  
+</section>
+
+
+<section>
+  <h2>Skills</h2>
+
+  <div class="skills-category">
+    <div class="skills-title">Soft skills:</div>
+    <div class="skills-content">Analytical mindset, clear communication, customer service orientation, negotiation, priority management, rigor, autonomy, teamwork, results-driven (+120% target achievement).</div>
+  </div>
+
+  <div class="skills-category">
+    <div class="skills-title">Technical (electricity • HVAC • plumbing):</div>
+    <div class="skills-content">
+      Electrical studies and sizing, schematics & wiring, switchboards/LV panels, protections & devices, LED lighting (DIALux/Relux), NF C 15-100 standards, EV charging stations (IRVE); 
+      air conditioning & ventilation (split systems, VRF/DRV, heat pumps, load calculations, regulation, RE2020); 
+      plumbing & fluids (cold/hot water networks, multilayer/PER piping, fittings, pumps, sealing, basic refrigeration R32).
+    </div>
+  </div>
+
+  <div class="skills-category">
+    <div class="skills-title">Sales & After-Sales Service:</div>
+    <div class="skills-content">B2B prospecting & customer retention, quotations & tenders, pipeline management, follow-ups, order tracking, after-sales service (diagnosis, returns, warranties), organization of client events, revenue & margin reporting.</div>
+  </div>
+
+  <div class="skills-category">
+    <div class="skills-title">IT skills:</div>
+    <div class="skills-content">ERP/CRM (SAP, Salesforce), Excel/Word/PowerPoint, AutoCAD, DIALux/Relux, HVAC calculation tools, basic ETL, Windows, Linux, Jira, Agile methodology, API basics.</div>
+  </div>
+
+  <div class="skills-category">
+    <div class="skills-title">Languages:</div>
+    <div class="skills-content">French (native), English (professional). </div>
+  </div>
+</section>
+		
+		
+		
+		
+		
+      </div>
+
+      <!-- FRENCH CV -->
+      <div id="cv-fr" class="cv-section">
+      
+			<h1>Nicolas Baucher</h1>
+        <div class="contact">
+          <p>📞 +33 (0)6 14 45 96 20</p>
+          <p>📧 <a href="mailto:nicolas.baucher@gmail.com">nicolas.baucher@gmail.com</a></p>
+          <p>🔗 <a href="https://linkedin.com/in/nicolasbaucher" target="_blank">linkedin.com/in/nicolasbaucher</a></p>
+		  <p>🌐 <a href="https://nicolasbaucher.github.io/" target="_blank">nicolasbaucher.github.io</a></p>
+          <p>🌍 Nationalité : Française</p>
+        </div>
+
+        <section>
+          <h2>Expérience Professionnelle</h2>
+
+          <div class="experience-item">
+            <div class="job-title">Assistant technico-commercial — Rexel, France (2016–jusqu'a present)</div>
+            <ul>
+			  <li>Contribution au dépassement de l’objectif de vente annuel de 120 % en 2022.</li>
+              <li>Conseil technique et support client (électricité, climatisation, plomberie).</li>
+              <li>Réalisation d’études électriques et dimensionnements techniques.</li>
+              <li>Suivi des commandes et gestion du SAV.</li>
+              <li>Mise en place et participation à des événements clients (salons, présentations produits).</li>
+			  <li>Contribution active à l’augmentation du chiffre d’affaires via fidélisation et prospection.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Agent commercial — Maselec, France (2008–2016)</div>
+            <ul>
+              <li>Accueil et conseil client sur tout type de matériel électrique pour le bâtiment, avec orientation vers les solutions adaptées aux besoins.</li>
+              <li>Vente et suivi des achats de matériel électrique pour professionnels et particuliers, assurant un service complet du conseil à la livraison..</li>
+              <li>Gestion des transactions commerciales et suivi des stocks de matériel électrique de bâtiment, garantissant la satisfaction client.</li>
+              <li>Conseiller technique en matériel électrique de bâtiment, orientant les clients vers les solutions les plus efficaces et économiques.</li>
+			   <li>Vente et achat de matériel électrique : analyse des besoins clients, proposition de solutions et gestion des commandes.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-title">Graphiste — Octe, France (2005–2008)</div>
+             <ul>
+              <li>Concevoir et réaliser des supports de communication (affiches, flyers, brochures, catalogues, bannières web, réseaux sociaux).</li>
+              <li>Développer des chartes graphiques et garantir leur respect.</li>
+              <li>Collaborer avec les équipes marketing, communication ou commerciales pour répondre aux besoins visuels.</li>
+              <li>Utiliser les logiciels de création graphique (Adobe Photoshop, Illustrator, InDesign, etc.).</li>
+			  <li>Créer des maquettes, logos et identités visuelles..</li>
+			  <li>Assurer une veille créative et technologique pour proposer de nouvelles idées.</li>
+            </ul>
+          </div>
+
+           <div class="experience-item">
+            <div class="job-title">Technicien au service maintenance — SEALED AIR S.A.S, France (2002–2005)</div>
+             <ul>
+              <li>Assurer la maintenance préventive et corrective des équipements industriels pour garantir leur bon fonctionnement.</li>
+              <li>Diagnostiquer rapidement les pannes et proposer des solutions techniques adaptées.</li>
+              <li>Participer à l’amélioration continue des procédés et à la sécurité des installations.</li>
+              <li>Réaliser le suivi des interventions et la gestion des pièces de rechange.</li>
+	
+            </ul>
+          </div> 
+  
+  
+             <div class="experience-item">
+            <div class="job-title">Électricien industriel — AQUABELLEC, France (2001–2002)</div>
+             <ul>
+              <li>Installation et câblage d’armoires électriques de manœuvre pour équipements industriel</li>
+              <li>Lecture et interprétation de schémas électriques industriels.</li>
+              <li>Tests et mise en service des installations électriques pour garantir leur conformité.</li>
+              <li>Respect strict des normes de sécurité et des procédures électriques industrielles.</li>
+		
+            </ul>
+          </div> 
+  
+
+        <section>
+          <h2>Prix et Récompenses</h2>
+          <div class="awards-grid">
+            <div class="award-item">
+              <div class="skills-title">🏆 Objectif commercial annuel dépassé de 120 % en 2022</div>
+              <div class="skills-content">Rexel Vallauris, France(2025)</div>
+            </div>
+            <div class="award-item">
+              <div class="skills-title">🏅 Augmentation du portefeuille clients de +30 % en deux ans</div>
+              <div class="skills-content">Rexel Vallauris, France(2023)</div>
+            </div>
+			
+			    <div class="award-item">
+              <div class="skills-title">🏆 Réduction du délai moyen de traitement SAV de 15 %</div>
+              <div class="skills-content">Rexel Vallauris, France(2022)</div>
+            </div>
+      <div class="award-item">
+              <div class="skills-title">🏅 Prix de l’initiative client (organisation d’événements techniques, fidélisation</div>
+              <div class="skills-content">Rexel Vallauris, France(2020)</div>
+            </div>
+        
+          </div>
+        </section>
+
+        <section>
+          <h2>Formation</h2>
+          <div class="education-item">
+            <div class="job-title">Formation Infographiste — C.C.I, France (2002-2003)</div>
+          </div>
+          <div class="education-item">
+            <div class="job-title">Etude en B.T.S. M.A.I. (Mécanique et Automatisme Industriel) — Lycée Louis Bascan, France (2001 - 2002)</div>
+          </div>
+		   <div class="education-item">
+            <div class="job-title">B.A.C. S.T.I. (Science des Techniques Industrielles) option dessin industriel — Lycée Louis Bascan, France (2000 - 2001)</div>
+          </div> 
+		  
+        </section>
+
+        <section>
+          <h2>Compétences</h2>
+    
+		  
+		  <div class="skills-category">
+          <div class="skills-title">Soft skills :</div>
+          <div class="skills-content">Esprit analytique, communication claire, sens du service client, négociation, gestion des priorités, rigueur, autonomie, travail en équipe, orientation résultats (+120% de la cible).</div>
+          </div>
+
+		<div class="skills-category">
+		<div class="skills-title">Technique (électricité • CVC • plomberie) :</div>
+		<div class="skills-content">  Études et dimensionnement électriques, schémas & câblage, tableaux/TGBT, protections & appareillages, éclairage LED (DIALux/Relux), normes NF C 15-100, IRVE ; 
+										climatisation & ventilation (split, VRF/DRV, PAC, calculs de charge, régulation, RE2020) ; 
+										plomberie & fluides (réseaux EF/ECS, PER/multicouche, robinetterie, pompes, étanchéité, bases frigorifiques R32).
+        </div>
+        </div>
+
+		<div class="skills-category">
+		  <div class="skills-title">Commercial & SAV :</div>
+		  <div class="skills-content">Prospection & fidélisation B2B, devis & appels d’offres, gestion du pipeline, relances, suivi de commandes, service après-vente (diagnostic, retours, garanties), organisation d’événements clients, reporting CA & marge.</div>
+		</div>
+
+		<div class="skills-category">
+		  <div class="skills-title">Informatique :</div>
+		  <div class="skills-content">ERP/CRM (SAP, Salesforce), Excel/Word/PowerPoint, AutoCAD, DIALux/Relux, outils de calcul CVC, ETL de base, Windows, Linux, Jira, méthodo Agile, notions d’API.</div>
+		</div>
+
+		<div class="skills-category">
+		  <div class="skills-title">Langues :</div>
+		  <div class="skills-content">Français (natif), Anglais (professionnel). Autres langues : à préciser.</div>
+		</div>
+		  
+		  
+		  
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    // Language preference persistence
+    const getStoredLanguage = () => {
+      try {
+        return localStorage.getItem('cv-language') || 'en';
+      } catch (e) {
+        return 'en';
+      }
+    };
+
+    const setStoredLanguage = (lang) => {
+      try {
+        localStorage.setItem('cv-language', lang);
+      } catch (e) {
+        // localStorage not available, ignore
+      }
+    };
+
+    // Language switch functionality
+    const selector = document.getElementById('language-selector');
+    const frSection = document.getElementById('cv-fr');
+    const enSection = document.getElementById('cv-en');
+
+    // Initialize with stored preference
+    const initialLang = getStoredLanguage();
+    selector.value = initialLang;
+    switchLanguage(initialLang);
+
+    function switchLanguage(lang) {
+      if (lang === 'fr') {
+        frSection.style.display = 'block';
+        enSection.style.display = 'none';
+        frSection.classList.add('active');
+        enSection.classList.remove('active');
+        document.documentElement.lang = 'fr';
+      } else {
+        frSection.style.display = 'none';
+        enSection.style.display = 'block';
+        enSection.classList.add('active');
+        frSection.classList.remove('active');
+        document.documentElement.lang = 'en';
+      }
+    }
+
+    selector.addEventListener('change', () => {
+      const selectedLang = selector.value;
+      switchLanguage(selectedLang);
+      setStoredLanguage(selectedLang);
+    });
+
+
+  </script>
+  
+  
+  <!-- Chatbot Integration: non-intrusive, fixed-position, mobile/desktop-ready -->
+<style>
+  :root {
+    /* Tweak these to better match your site if needed */
+    --cb-accent: #3b82f6;            /* launcher ring & focus outline */
+    --cb-bg: #ffffff;
+    --cb-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    --cb-radius: 20px;
+    --cb-z: 2147483000;              /* very high to sit above other layers */
+  }
+  .cb-launcher, .cb-overlay, .cb-window { all: initial; font-family: inherit; }
+  .cb-hidden { display: none !important; }
+
+  /* Launcher button */
+  .cb-launcher {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--cb-bg);
+    box-shadow: var(--cb-shadow);
+    z-index: var(--cb-z);
+    cursor: pointer;
+    display: grid; place-items: center;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .cb-launcher:focus-visible {
+    outline: 3px solid var(--cb-accent);
+    outline-offset: 2px;
+    border-radius: 50%;
+  }
+  .cb-launcher svg { width: 28px; height: 28px; }
+
+  /* Dim background overlay when chat is open (no layout impact) */
+  .cb-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: calc(var(--cb-z) + 1);
+  }
+
+  /* Chat window container */
+  .cb-window {
+    position: fixed;
+    z-index: calc(var(--cb-z) + 2);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    width: min(420px, 92vw);
+    height: min(70vh, 92vh);
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(84px, calc(env(safe-area-inset-bottom) + 84px)); /* clears where launcher was */
+    background: var(--cb-bg);
+    border-radius: var(--cb-radius);
+    box-shadow: var(--cb-shadow);
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  /* Header with close button */
+  .cb-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .cb-title { font: 600 14px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: #0f172a; }
+  .cb-close {
+    all: unset; cursor: pointer;
+    display: inline-grid; place-items: center;
+    width: 32px; height: 32px; border-radius: 8px;
+  }
+  .cb-close:focus-visible {
+    outline: 3px solid var(--cb-accent);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  /* Iframe fills the remaining space */
+  .cb-frame { width: 100%; height: 100%; border: 0; display: block; }
+
+  /* Mobile full-screen behavior for small heights */
+  @media (max-width: 640px), (max-height: 640px) {
+    .cb-window {
+      width: 100vw;
+      height: min(100vh, 100dvh);
+      right: 0;
+      bottom: 0;
+      border-radius: 0;
+    }
+  }
+
+  /* Respect users who prefer less motion */
+  @media (prefers-reduced-motion: no-preference) {
+    .cb-window { transition: transform .2s ease, opacity .2s ease; }
+    .cb-window[data-state="enter"] { transform: translateY(8px); opacity: 0; }
+    .cb-window[data-state="open"]  { transform: translateY(0);   opacity: 1; }
+  }
+</style>
+
+<div class="cb-launcher" id="cbLauncher" aria-label="Open chat" role="button" tabindex="0">
+  <!-- Simple chat bubble icon (no external assets) -->
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 4h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9.5l-4.2 3.5a.75.75 0 0 1-1.3-.57V15H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM7 8.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/>
+  </svg>
+</div>
+
+<div class="cb-overlay cb-hidden" id="cbOverlay" aria-hidden="true"></div>
+
+<section class="cb-window cb-hidden" id="cbWindow" role="dialog" aria-label="AI chat" aria-modal="true" data-state="enter">
+  <header class="cb-header">
+    <div class="cb-title">Chat with Julia’s Assistant</div>
+    <button class="cb-close" id="cbClose" aria-label="Close chat">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.4 6.4a1 1 0 0 1 1.4 0L12 10.6l4.2-4.2a1 1 0 0 1 1.4 1.4L13.4 12l4.2 4.2a1 1 0 1 1-1.4 1.4L12 13.4l-4.2 4.2a1 1 0 0 1-1.4-1.4L10.6 12 6.4 7.8a1 1 0 0 1 0-1.4z"/></svg>
+    </button>
+  </header>
+  <iframe
+    class="cb-frame"
+    id="cbFrame"
+    title="AI chat"
+    /*src="https://app.chatgptbuilder.io/webchat/?p=1104372&id=SvQINM0vZupBtM2y&cl=0"*/
+	
+	 src="https://app.chatgptbuilder.io/webchat/?p=1104372&ref=Assistant IA de Nicolas&cl=0"
+	
+
+	
+    allow="clipboard-read; clipboard-write; microphone; camera"
+    referrerpolicy="no-referrer">
+  </iframe>
+</section>
+
+<script>
+  (function () {
+    var d = document;
+    var launcher = d.getElementById('cbLauncher');
+    var overlay  = d.getElementById('cbOverlay');
+    var win      = d.getElementById('cbWindow');
+    var closeBtn = d.getElementById('cbClose');
+
+    function openChat() {
+      launcher.classList.add('cb-hidden');              // Hide launcher so it can’t overlap the chat
+      overlay.classList.remove('cb-hidden');
+      overlay.setAttribute('aria-hidden', 'false');
+      win.classList.remove('cb-hidden');
+      win.dataset.state = 'open';
+      // Prevent background scroll on iOS without affecting layout height
+      d.documentElement.style.overflow = 'hidden';
+      d.body.style.overflow = 'hidden';
+    }
+
+    function closeChat() {
+      win.classList.add('cb-hidden');
+      win.dataset.state = 'enter';
+      overlay.classList.add('cb-hidden');
+      overlay.setAttribute('aria-hidden', 'true');
+      launcher.classList.remove('cb-hidden');
+      d.documentElement.style.overflow = '';
+      d.body.style.overflow = '';
+      launcher.focus({ preventScroll: true });
+    }
+
+    function trapFocus(e) {
+      if (!win.classList.contains('cb-hidden')) {
+        var isTab = (e.key === 'Tab' || e.keyCode === 9);
+        var isEsc = (e.key === 'Escape' || e.keyCode === 27);
+        if (isEsc) { e.preventDefault(); closeChat(); return; }
+        if (isTab) {
+          // basic focus trap
+          var focusables = win.querySelectorAll('button, [href], iframe, [tabindex]:not([tabindex="-1"])');
+          focusables = Array.prototype.slice.call(focusables).filter(function(el){ return !el.hasAttribute('disabled'); });
+          if (focusables.length) {
+            var first = focusables[0], last = focusables[focusables.length - 1];
+            if (e.shiftKey && d.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && d.activeElement === last) { e.preventDefault(); first.focus(); }
+          }
+        }
+      }
+    }
+
+    launcher.addEventListener('click', openChat);
+    launcher.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChat(); }
+    });
+    closeBtn.addEventListener('click', closeChat);
+    overlay.addEventListener('click', closeChat);
+    d.addEventListener('keydown', trapFocus, true);
+
+    // Guard: don’t create extra layout height — everything is fixed-position.
+    // No-op here by design.
+  })();
+</script>
+<!-- End Chatbot Integration -->
+
+  
+  
+</body>
+</html>
